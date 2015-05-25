@@ -112,10 +112,12 @@ define(function(require) {
 			// Check if inputType is an object
 			// if so extend
 
+			//permissive: allows content filters to be removed for ckeditor
 			var fieldObject = {
 				type: field.inputType,
 				validators: validators,
 				help: field.help,
+				permissive: field.permissive || false,
 				default: field.default,
 				fieldType: field.inputType
 			};

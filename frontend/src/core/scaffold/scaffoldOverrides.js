@@ -53,6 +53,8 @@ define(function(require) {
 
 	Backbone.Form.editors.TextArea.prototype.render = function() {
 
+		var self = this;
+
 	    // Place value
 	    this.setValue(this.value);
 	    _.delay(_.bind(function() {
@@ -75,6 +77,14 @@ define(function(require) {
 					{ name: 'others', items: [ '-' ] }
 				]
 			});
+
+			//permissive mode allows us to remove all ckeditor content filters
+			//this can be set in the schema file of the component text area
+			if(self.schema != undefined && self.schema != null) {
+				if(self.schema.permissive) {
+					self.editor.config.allowedContent = true;
+				}
+			}
 
 	    }, this), 100);
 
