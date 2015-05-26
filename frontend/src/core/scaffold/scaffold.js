@@ -117,7 +117,7 @@ define(function(require) {
 				type: field.inputType,
 				validators: validators,
 				help: field.help,
-				permissive: field.permissive || false,
+				options: field.options || {},
 				default: field.default,
 				fieldType: field.inputType
 			};
