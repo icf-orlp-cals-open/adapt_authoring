@@ -71,7 +71,9 @@ AdaptOutput.prototype.publish = function (courseId, isPreview, request, response
             return callback(err);
           }
 
-          isRebuildRequired = exists;
+          // isRebuildRequired = exists;
+          // force rebuild each time (temporary)
+          isRebuildRequired = true;
 
           callback(null);
         });
@@ -157,7 +159,7 @@ AdaptOutput.prototype.publish = function (courseId, isPreview, request, response
 
             logger.log('info', 'grunt server-build ' + args.join(' '));
 
-            child = exec('grunt server-build ' + args.join(' '), {cwd: path.join(FRAMEWORK_ROOT_FOLDER)},
+            child = exec('grunt --stack server-build ' + args.join(' '), {cwd: path.join(FRAMEWORK_ROOT_FOLDER)},
               function (error, stdout, stderr) {
                 if (error !== null) {
                   logger.log('error', 'exec error: ' + error);

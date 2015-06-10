@@ -22,7 +22,14 @@
 
   <h1 class="asset-preview-title">{{title}}</h1>
   <div class="asset-preview-description">{{description}}</div>
-  <div class="asset-size">{{t 'app.assetsize'}} : {{{bytesToSize size}}}</div>
+
+  <div class="asset-size">
+    {{#if_value_equals assetType "edgeAnimation"}}
+    N/A
+    {{else}}
+      {{t 'app.assetsize'}} : {{{bytesToSize size}}}
+    {{/if_value_equals}}
+  </div>
 
   {{#if metadata.duration}}
     <div class="asset-duration break">{{t 'app.assetduration'}} : {{{formatDuration metadata.duration}}}</div>

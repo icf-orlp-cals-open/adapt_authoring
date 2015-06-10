@@ -165,6 +165,7 @@
   "app.filetypeimage" : "Image",
   "app.filetypeaudio" : "Audio",
   "app.filetypevideo" : "Video",
+  "app.filetypeEdge" : "Edge Animation",
   "app.assetsize" : "Size",
   "app.assetduration" : "Duration",
   "app.assetdimensions" : "Dimensions",

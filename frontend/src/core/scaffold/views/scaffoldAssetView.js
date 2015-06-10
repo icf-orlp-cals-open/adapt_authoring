@@ -225,6 +225,7 @@ define(function(require) {
         Origin.scaffold.addCustomField('Asset:image', ScaffoldAssetView);
         Origin.scaffold.addCustomField('Asset:audio', ScaffoldAssetView);
         Origin.scaffold.addCustomField('Asset:video', ScaffoldAssetView);
+        Origin.scaffold.addCustomField('Asset:edgeAnimation', ScaffoldAssetView);
         Origin.scaffold.addCustomField('Asset:other', ScaffoldAssetView);
     })
     

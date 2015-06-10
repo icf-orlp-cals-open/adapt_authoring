@@ -13,7 +13,9 @@ var FileStorage = require('../../../lib/filestorage').FileStorage,
     async = require('async'),
     probe = require('node-ffprobe'),
     logger = require('../../../lib/logger'),
-    FFMpeg = require('fluent-ffmpeg');
+    FFMpeg = require('fluent-ffmpeg'),
+    ncp = require('ncp'),
+    rimraf = require('rimraf');
 
 function LocalFileStorage() {
   this.dataRoot = path.join(configuration.serverRoot, configuration.getConfig('dataRoot'));
@@ -245,6 +247,45 @@ LocalFileStorage.prototype.processFileUpload = function (file, newPath, options,
   });
 } ;
 
+LocalFileStorage.prototype.processFolderUpload = function (folder, newPath, options, callback){
+  newPath = this.resolvePath(newPath);
+  var relativePath = this.getRelativePath(newPath);
+  var self = this;
+
+  if('function' === typeof options){
+    callback = options;
+    options = {};
+  }
+
+  mkdirp(path.dirname(newPath), function(err) {
+    if(err){
+      return callback(err);
+    }
+
+    ncp(folder, newPath, function(err){
+      if(err){
+        return callback(err);
+      }
+      callback();
+    });
+  });
+};
+
+LocalFileStorage.prototype.copyFolder = function(fromFolder, toFolder, callback){
+  fromFolder = this.resolvePath(fromFolder);
+  mkdirp(path.dirname(toFolder), function (err) {
+    if(err) {
+      return callback(err);
+    }
+    ncp(fromFolder, toFolder, function (err) {
+      if(err){
+        return callback(err);
+      }
+      callback();
+    });
+  });
+};
+
 /**
  * Creates a directory at the given path
  *
@@ -265,6 +306,22 @@ LocalFileStorage.prototype.createDirectory = function (filePath, callback) {
 
 LocalFileStorage.prototype.removeDirectory = function (filePath, callback) {
   fs.rmdir(this.resolvePath(filePath), callback);
+};
+
+/**
+ * Recursively removes a directory at the given path - be careful!
+ *
+ * @param {string} filePath - the path to the directory to be recursively removed
+ * @param {function} callback - function of the form function(error)
+ */
+
+LocalFileStorage.prototype.recursivelyRemoveDirectory = function (folderPath, callback) {
+  rimraf(this.resolvePath(folderPath), function(err) {
+    if(err){
+      callback(err);
+    }
+    callback();
+  });
 };
 
 /**
