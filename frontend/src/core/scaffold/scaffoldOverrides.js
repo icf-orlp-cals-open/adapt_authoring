@@ -83,7 +83,21 @@ define(function(require) {
 			if(self.schema != undefined && self.schema != null) {
 				if(self.schema.options) {
 					if(self.schema.options.permissive) {
+						
 						self.editor.config.allowedContent = true;
+
+						//so &nbsp; doesn't get added on empty elements
+						self.editor.config.fillEmptyBlocks = false;
+						self.editor.config.basicEntities = false;
+						self.editor.config.entities_greek = false; 
+						self.editor.config.entities_latin = false; 
+						self.editor.config.entities_additional = '';
+
+						//allow empty space i, div, and span tags
+						self.editor.config.protectedSource.push(/<i[^>]*><\/i>/g);
+						self.editor.config.protectedSource.push(/<div[^>]*><\/div>/g);
+						self.editor.config.protectedSource.push(/<span[^>]*><\/span>/g);
+
 					}
 				}
 			
