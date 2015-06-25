@@ -25,6 +25,48 @@
       "inputType":"TextArea",
       "validators": []
     },
+    "_media": {
+      "type":"object",
+      "required": false,
+      "title": "Media",
+      "properties":{
+        "mp4": {
+          "type":"string",
+          "required":false,
+          "default": "",
+          "title": "MP4 Asset",
+          "inputType": "Asset:video",
+          "validators": [],
+          "help": "Link to an MP4 video"
+        },
+        "ogv": {
+          "type":"string",
+          "required":false,
+          "default": "",
+          "title": "OGV Link",
+          "inputType": "Asset:video",
+          "validators": [],
+          "help": "Link to an OGV video"
+        },
+        "poster": {
+          "type":"string",
+          "required":false,
+          "default": "",
+          "title": "Poster Link",
+          "inputType": "Asset:image",
+          "validators": [],
+          "help": "Image displayed before the video is played"
+        },
+        "transcript": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "inputType": "TextArea",
+          "validators": [],
+          "help": "This is the transcript text"
+        }
+      }
+    },
     "_graphic": {
       "type": "object",
       "title": "",

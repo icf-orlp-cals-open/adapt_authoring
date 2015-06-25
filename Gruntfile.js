@@ -91,6 +91,10 @@ module.exports = function(grunt) {
         routes: {
           files: ['routes/**/*.*'],
           tasks: ['handlebars']
+        },
+        schema: {
+          files: ['plugins/**/*.js', 'plugins/**/*.schema', 'plugins/**/*.json'],
+          tasks: ['requirePlugins', 'copy', 'less', 'requirejs:dev']
         }
       },
       casperjs: {
@@ -190,7 +194,6 @@ module.exports = function(grunt) {
         }
 
         requirePaths += relativePath + '/index.js' + splitter;
-
 
       });
 
