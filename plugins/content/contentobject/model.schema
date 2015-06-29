@@ -19,6 +19,12 @@
       "validators": [],
       "help": "When viewing a menu/page - this is the title that will be displayed on the menu/page"
     },
+    "description":{
+      "type":"string",
+      "default" : "",
+      "inputType":"TextArea",
+      "validators": []
+    },
     "body":{
       "type":"string",
       "default" : "",
