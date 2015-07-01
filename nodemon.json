@@ -1,0 +1,4 @@
+{
+  "verbose": true,
+  "ignore": ["temp","data","node_modules","test","test_frontend"]
+}
