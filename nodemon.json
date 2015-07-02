@@ -1,4 +1,4 @@
 {
   "verbose": true,
-  "ignore": ["temp","data","node_modules","test","test_frontend"]
+  "ignore": ["temp","data","node_modules","test","test_frontend","plugins/content/**/versions"]
 }
