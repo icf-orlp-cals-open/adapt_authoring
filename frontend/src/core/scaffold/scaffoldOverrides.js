@@ -80,9 +80,9 @@ define(function(require) {
 
 			//permissive mode allows us to remove all ckeditor content filters
 			//this can be set in the schema file of the component text area
-			if(self.schema != undefined && self.schema != null) {
-				if(self.schema.options) {
-					if(self.schema.options.permissive) {
+			//if(self.schema != undefined && self.schema != null) {
+			//	if(self.schema.options) {
+			//		if(self.schema.options.permissive) {
 						
 						self.editor.config.allowedContent = true;
 
@@ -98,10 +98,10 @@ define(function(require) {
 						self.editor.config.protectedSource.push(/<div[^>]*><\/div>/g);
 						self.editor.config.protectedSource.push(/<span[^>]*><\/span>/g);
 
-					}
-				}
+					//}
+				//}
 			
-			}
+			//}
 
 	    }, this), 100);
 
