@@ -188,29 +188,6 @@ userConfig = [
  * 5. TODO install plugins
  */
 var steps = [
-  // install the framework
-  function installFramework (next) {
-    // AB-277 always remove framework folder on install
-    rimraf(path.resolve(__dirname, 'adapt_framework'), function () { 
-      // now clone the framework
-      frameworkHelper.cloneFramework(function (err) {
-        if (err) {
-      	  console.log('ERROR: ', err);
-          return exitInstall(1, 'Framework install failed. See console output for possible reasons.');
-        }
-      
-        // Remove the default course
-        rimraf(path.resolve(__dirname, 'adapt_framework', 'src', 'course'), function(err) {
-          if (err) {
-            console.log('ERROR: ', err);
-            return exitInstall(1, 'Framework install error -- unable to remove default course.');
-          }
-
-          return next();
-        });
-      });
-     });
-  },
   // configure environment
   function configureEnvironment (next) {
     console.log('You will now be prompted to set configuration items. Just press enter to accept the default.');
